@@ -2,15 +2,24 @@ import { useCallback, useEffect, useReducer, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import Loader from '../utils/Loader'
-import { Button, Col, Container, Image, Row } from 'react-bootstrap'
+import { Col, Container, Image, Row } from 'react-bootstrap'
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa'
-import { dislikePinPost, getPinDetail, likePinPost } from '../config/api'
+import {
+  dislikePinPost,
+  getComments,
+  getPinDetail,
+  likePinPost,
+} from '../config/api'
 import { MdDownload } from 'react-icons/md'
 import { AiFillHeart } from 'react-icons/ai'
 import { Comment, Error } from '../components'
 import { downloadImage } from '../utils/DownloadImage'
 import { PinReducer, initialState } from '../reducers/pinReducer'
 import { useStateContext } from '../config/context'
+import {
+  CommentPinReducer,
+  initialState as initial,
+} from '../reducers/commentReducer'
 
 export default function PinDetail() {
   const { pinId } = useParams()
@@ -19,6 +28,7 @@ export default function PinDetail() {
   const [loading, setLoading] = useState(false)
   const [current, setCurrent] = useState(0)
   const [state, dispatch] = useReducer(PinReducer, initialState)
+  // const [comment, dispatch] = useReducer(CommentPinReducer, initial)
   const { userinfo } = useStateContext()
   const length = data?.image?.length
 
@@ -42,6 +52,25 @@ export default function PinDetail() {
     fetchPinDetail()
   }, [data?.title, fetchPinDetail])
   console.log('state', state)
+
+  // const fetchComments = useCallback(async () => {
+  //   dispatchB({ type: 'COMMENT_REQUEST' })
+  //   getComments(pinId)
+  //     .then((res) => {
+  //       dispatch({ type: 'COMMENT_SUCCESS', payload: res.data })
+  //     })
+  //     .catch((error) => {
+  //       dispatchB({ type: 'COMMENT_ERROR', payload: error })
+  //       toast.error(error.message)
+  //     })
+  //     .finally(() => {
+  //       dispatchB({ type: 'END_REQUEST' })
+  //     })
+  // }, [pinId])
+
+  // useEffect(() => {
+  //   fetchComments()
+  // }, [fetchComments])
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1)
@@ -74,7 +103,9 @@ export default function PinDetail() {
     <section className='sec'>
       <Container fluid='xl' className='mx-auto py-5 px-3'>
         {loading ? (
-          <Loader title='fetching pin details' />
+          <div style={{ height: '50px' }}>
+            <Loader title='fetching pin details' />
+          </div>
         ) : (
           <Row className='py-lg-3 w-100 mx-auto g-lg-5'>
             <Col lg={6} className='mb-4'>
@@ -96,7 +127,7 @@ export default function PinDetail() {
                   </>
                 )}
                 {data?.image?.map((image, i) => (
-                  <div key={i} style={{ width: 'auto', height: '600px' }}>
+                  <div key={i} className='pinId'>
                     {i === current && (
                       <Image
                         src={image}
@@ -150,8 +181,7 @@ export default function PinDetail() {
                         )}
                       </div>
                     ))}
-                    <Button
-                      variant='none'
+                    <div
                       onClick={
                         data?.likes?.includes(userinfo?.user?._id)
                           ? handleDislikePin
@@ -173,7 +203,7 @@ export default function PinDetail() {
                           title='like this post'
                         />
                       )}
-                    </Button>
+                    </div>
                   </div>
                 </div>
                 <p className='fw-bold mb-5 text-end'>

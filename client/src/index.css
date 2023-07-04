@@ -30,9 +30,6 @@ h1 {
   right: 0;
   z-index: 3;
 }
-.icon-color {
-  color: rgb(240, 203, 112);
-}
 
 .link {
   background-color: #6469ff !important;
@@ -84,7 +81,7 @@ input:focus {
   width: 100%;
 }
 .searchbox {
-  padding-left: 60px !important;
+  padding-left: 50px !important;
   border-radius: 50px !important;
 }
 .searchbox::placeholder {
@@ -97,6 +94,10 @@ input:focus {
 }
 .scrollbody::-webkit-scrollbar {
   display: none;
+}
+.pinId {
+  width: auto;
+  height: 450px;
 }
 
 @media (min-width: 768px) {
@@ -161,10 +162,10 @@ input:focus {
 
   .cardBox:hover .focus-content,
   .cardBox:focus-within .focus-content {
-    /* margin-top: -40px !important; */
     opacity: 1;
   }
-  .icon-color {
-    color: #fff;
+   .pinId {
+    width: auto;
+    height: 600px;
   }
 }
