@@ -31,7 +31,7 @@ export function CardMini({ _id, image, title, userId, deleteYourPin }) {
         <Image className='w-100 h-100 rounded-4' src={image[0]} alt={title} />
       </Link>
       {userinfo?.user?._id === userId && (
-        <div className='d-flex justify-content-end card_options p-2 focus-content'>
+        <div className='d-flex justify-content-end card_options py-2 px-4 focus-content'>
           <AiFillDelete
             size='22px'
             type='button'

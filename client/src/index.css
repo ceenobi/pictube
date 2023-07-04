@@ -20,7 +20,7 @@ h1 {
 }
 
 .cardBox {
-  flex: 1 0 130px;
+  flex: 1 0 135px;
   position: relative;
 }
 
@@ -84,7 +84,7 @@ input:focus {
   width: 100%;
 }
 .searchbox {
-  padding-left: 50px !important;
+  padding-left: 60px !important;
   border-radius: 50px !important;
 }
 .searchbox::placeholder {
