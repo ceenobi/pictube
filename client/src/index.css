@@ -1,0 +1,170 @@
+@import url('https://fonts.cdnfonts.com/css/aok-buenos-aires');
+@import url('https://fonts.cdnfonts.com/css/nahista');
+
+* {
+  font-family: 'AOK Buenos Aires', sans-serif;
+  text-decoration: none !important;
+}
+.logo {
+  font-family: 'Nahista', sans-serif;
+}
+h1 {
+  font-size: clamp(2.25rem, 3vw, 2.8rem) !important;
+}
+.h1-mini {
+  font-size: clamp(1.5rem, 2vw, 1.8rem) !important;
+}
+
+.sec {
+  margin-top: 4rem;
+}
+
+.cardBox {
+  flex: 1 0 130px;
+  position: relative;
+}
+
+.focus-content {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
+}
+.icon-color {
+  color: rgb(240, 203, 112);
+}
+
+.link {
+  background-color: #6469ff !important;
+  border: none;
+}
+
+.hero {
+  background-image: url('https://res.cloudinary.com/ceenobi/image/upload/v1640290703/Fashion/tsaush-aKmyHlgB09o-unsplash_hxkag6.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 500px;
+}
+.login-bg {
+  background-image: url('https://res.cloudinary.com/ceenobi/image/upload/v1684942019/Background_czzv75.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.leading-snug {
+  line-height: 1.375;
+}
+
+.formA {
+  width: 90%;
+}
+.formResize {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  border-top-style: hidden !important;
+  border-right-style: hidden !important;
+  border-left-style: hidden !important;
+  border-bottom-style: 2px solid black !important;
+  background-color: transparent !important;
+}
+input:focus {
+  outline: none !important;
+}
+.title::placeholder {
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+}
+.form-search {
+  border-radius: 50px !important;
+  width: 100%;
+}
+.searchbox {
+  padding-left: 50px !important;
+  border-radius: 50px !important;
+}
+.searchbox::placeholder {
+  padding-left: 0;
+}
+
+.scrollbody {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbody::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  form {
+    border-radius: 10px !important;
+  }
+  .formA {
+    width: 400px;
+  }
+  .formResize {
+    min-width: 500px;
+  }
+  .form-search {
+    width: 40vw;
+  }
+  .cardBox {
+    flex: 1 0 200px;
+  }
+}
+@media (min-width: 992px) {
+  .sec {
+    margin-top: 6rem;
+  }
+
+  .formResize {
+    min-width: 500px;
+  }
+  .cardBox {
+    flex: 0 0 235px;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .cardBox * {
+    transition: 0.3s ease all;
+  }
+
+  .cardBox img {
+    margin: 0;
+    width: 300px;
+    height: 224px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cardBox:hover img {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    filter: brightness(50%);
+    transition: 0.3s ease-in-out;
+  }
+  .cardBox .focus-content {
+    display: block;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+  }
+
+  .cardBox:hover .focus-content,
+  .cardBox:focus-within .focus-content {
+    /* margin-top: -40px !important; */
+    opacity: 1;
+  }
+  .icon-color {
+    color: #fff;
+  }
+}
