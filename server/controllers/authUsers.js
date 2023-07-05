@@ -99,10 +99,6 @@ export const updateUser = async (req, res) => {
       userId.email = req.body.email || userId.email
       userId.image = req.body.image || userId.image
       userId.bio = req.body.bio || userId.bio
-      // const hashedPassword = await bcrypt.hash(req.body.password, 10)
-      // if (hashedPassword) {
-      //   userId.password = hashedPassword
-      // }
       const updatedUser = await userId.save()
       const user = {
         _id: updatedUser._id,

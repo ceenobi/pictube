@@ -7,7 +7,7 @@ export default function Root() {
       <Navbar />
       <main
         className='w-100 bg-white'
-        style={{ minHeight: '92vh' }}
+        style={{ minHeight: '95vh' }}
       >
         <Outlet />
       </main>

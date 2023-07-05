@@ -126,8 +126,7 @@ input:focus {
     min-width: 500px;
   }
   .cardBox {
-    flex: 0 0 235px;
-    padding: 0;
+    flex: 1 0 235px;
     overflow: hidden;
     position: relative;
   }
@@ -164,7 +163,7 @@ input:focus {
   .cardBox:focus-within .focus-content {
     opacity: 1;
   }
-   .pinId {
+  .pinId {
     width: auto;
     height: 600px;
   }

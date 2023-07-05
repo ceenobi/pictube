@@ -33,7 +33,7 @@ export default function Routespath() {
           index
           element={
             userinfo?.access_token ? (
-              <React.Suspense fallback={<Loader />}>
+              <React.Suspense fallback={<Loader title='loading...' />}>
                 <Home />{' '}
               </React.Suspense>
             ) : (
@@ -67,7 +67,7 @@ export default function Routespath() {
         <Route
           path='pin/:pinId'
           element={
-            <React.Suspense fallback={<Loader />}>
+            <React.Suspense fallback={<Loader/>}>
               <ProtectedRoute>
                 <PinDetail />
               </ProtectedRoute>

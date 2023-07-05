@@ -6,6 +6,11 @@ export const initialState = {
 export const PinReducer = (state, action) => {
   console.log('pin like dispatched', action)
   switch (action.type) {
+    case 'PIN_DETAIL':
+      return {
+        ...state,
+        pin: action.payload,
+      }
     case 'LIKE_PIN_SUCCESS':
       return {
         ...state,

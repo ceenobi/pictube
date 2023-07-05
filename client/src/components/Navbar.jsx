@@ -4,9 +4,18 @@ import Image from 'react-bootstrap/Image'
 import Dropdown from 'react-bootstrap/Dropdown'
 import { useStateContext } from '../config/context'
 import SearchBox from './SearchBox'
+import { useReducer } from 'react'
+import { AuthReducer, initialState } from '../reducers/userReducer'
 
 export default function Navbar() {
-  const { userinfo, setLogOut } = useStateContext()
+  const { userinfo } = useStateContext()
+  const [state, dispatch] = useReducer(AuthReducer, initialState)
+
+  const setLogOut = async () => {
+    dispatch({ type: 'LOGOUT' })
+    location.replace('/')
+    console.log('logout', state)
+  }
 
   return (
     <header

@@ -93,7 +93,7 @@ export default function UpdateProfile({ data }) {
               <Form.Group controlId='formProfileUpload' className='mb-4 mt-5'>
                 <Form.Control
                   type='file'
-                  accept='image/*'
+                  accept='image/png, image/jpeg'
                   placeholder='Upload profile image'
                   className='mb-1 rounded-0 bg-black text-white'
                   onChange={(e) => setImgPic(e.target.files[0])}

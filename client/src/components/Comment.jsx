@@ -5,7 +5,7 @@ import { MdDelete } from 'react-icons/md'
 import { CommentPinReducer, initialState } from '../reducers/commentReducer'
 import { deleteComment, getComments, postComment } from '../config/api'
 import Loader from '../utils/Loader'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Form, Image } from 'react-bootstrap'
 import { useStateContext } from '../config/context'
 import { format } from 'timeago.js'
 import { Link } from 'react-router-dom'
@@ -30,8 +30,8 @@ export default function Comment({ pinId }) {
   }, [pinId])
 
   useEffect(() => {
-    fetchComments()
-  }, [fetchComments])
+    fetchComments(pinId)
+  }, [fetchComments, pinId])
 
   const userId = userinfo?.user?._id
   const image = userinfo?.user?.image
@@ -87,7 +87,7 @@ export default function Comment({ pinId }) {
           ) : (
             <div
               className='h-[300px] overflow-y-scroll scrollbody'
-              style={{ height: '350px'}}
+              style={{ height: '350px' }}
             >
               {state.comments?.map((item) => (
                 <div
@@ -141,10 +141,22 @@ export default function Comment({ pinId }) {
       ) : (
         <p>Be the first one to comment.</p>
       )}
-      <div className='mt-5'>
-        <Form onSubmit={onSubmitHandler}>
-          <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
-            <Form.Label>Add comment</Form.Label>
+      <hr className='mt-5' />
+      <div>
+        <p className='fw-bold'>Add comment</p>
+        <Form
+          onSubmit={onSubmitHandler}
+          className='d-flex justify-content-center align-items-center gap-3'
+        >
+          <Image
+            src={userinfo?.user?.image}
+            className='rounded-circle'
+            style={{ width: '40px', height: '40px' }}
+          />
+          <Form.Group
+            className='mb-3 flex-grow-1'
+            controlId='exampleForm.ControlTextarea1'
+          >
             <Form.Control
               as='textarea'
               rows={2}

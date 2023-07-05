@@ -8,9 +8,13 @@ import { useStateContext } from '../config/context'
 
 export function Card({ _id, image, title }) {
   return (
-    <div className='cardBox w-100 h-auto rounded-4'>
-      <Link to={`/pin/${_id}`} className='rounded-4'>
-        <Image className='w-100 h-100 rounded-4' src={image[0]} alt={title} />
+    <div className='cardBox w-100 h-75 rounded-4'>
+      <Link to={`/pin/${_id}`}>
+        <Image
+          className='w-100 h-100 rounded-4 object-fit-fill'
+          src={image[0]}
+          alt={title}
+        />
       </Link>
       <div className='d-none d-lg-flex justify-content-end p-2 focus-content'>
         <MdOutlineDownloadForOffline
@@ -27,8 +31,12 @@ export function CardMini({ _id, image, title, userId, deleteYourPin }) {
   const { userinfo } = useStateContext()
   return (
     <div className='cardBox w-100 h-auto rounded-4'>
-      <Link to={`/pin/${_id}`} className='rounded-4'>
-        <Image className='w-100 h-100 rounded-4' src={image[0]} alt={title} />
+      <Link to={`/pin/${_id}`}>
+        <Image
+          className='w-100 h-100 rounded-4'
+          src={image[0]}
+          alt={title}
+        />
       </Link>
       {userinfo?.user?._id === userId && (
         <div className='d-none d-lg-flex justify-content-end py-2 px-4 focus-content'>
@@ -46,8 +54,12 @@ export function CardMini({ _id, image, title, userId, deleteYourPin }) {
 export function CardSearch({ _id, image, title }) {
   return (
     <div className='cardBox w-100 h-auto rounded-4'>
-      <Link to={`/pin/${_id}`} className='rounded-4'>
-        <Image className='w-100 h-100 rounded-4' src={image[0]} alt={title} />
+      <Link to={`/pin/${_id}`}>
+        <Image
+          className='w-100 h-100 rounded-4'
+          src={image[0]}
+          alt={title}
+        />
       </Link>
     </div>
   )
