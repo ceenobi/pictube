@@ -77,9 +77,7 @@ export default function Profile() {
             <hr />
             <div className='my-4'>
               <h1 className='fs-5 mb-4 fw-bold'>
-                {data?._id === userinfo?.user?._id
-                  ? 'Your pins'
-                  : `${data?.username.toUpperCase()} pins`}
+                {data?._id === userinfo?.user?._id ? 'Your pins' : `pins`}
               </h1>
               {data?.pin?.length > 0 ? (
                 <Row className='gy-4'>
@@ -98,7 +96,7 @@ export default function Profile() {
                 {' '}
                 {data?._id === userinfo?.user?._id
                   ? 'Your liked pins'
-                  : `${data?.username.toUpperCase()} liked pins`}
+                  : `liked pins`}
               </h1>
               {data?.likedPins?.length > 0 ? (
                 <Row className='gy-4'>
