@@ -19,12 +19,12 @@ export default function Navbar() {
 
   return (
     <header
-      className='position-fixed w-100 top-0 bg-white shadow-sm'
+      className='position-fixed w-100 top-0 bg-white shadow-sm p-3'
       style={{ zIndex: 10 }}
     >
       <Container
         fluid
-        className='d-flex align-items-center justify-content-between p-3'
+        className='d-flex align-items-center justify-content-between'
       >
         <NavLink to='/' className='font-bold display-5 logo text-black me-2'>
           Pictube

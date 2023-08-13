@@ -2,6 +2,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState, useReducer } from 'react'
 import registerOptions from '../../utils/FormValidate'
@@ -14,7 +15,7 @@ import Loader from '../../utils/Loader'
 export default function Password() {
   const [state, dispatch] = useReducer(AuthReducer, initialState)
   const [validateUser, setValidateUser] = useState(null)
-  const { getUserDetails } = useStateContext()
+  const { getUserDetails, passwordShown, togglePassword } = useStateContext()
   const redirect = location.search ? location.search.split('=')[1] : '/'
   const navigate = useNavigate()
   const {
@@ -69,20 +70,34 @@ export default function Password() {
         <Loader title='Signing you in' />
       ) : (
         <Form className='mt-4 w-100' onSubmit={handleSubmit(onSubmitHandler)}>
-          <Form.Group className='mb-4' controlId='password'>
+          <Form.Group className='position-relative' controlId='password'>
             <Form.Control
-              type='password'
+              type={passwordShown ? 'text' : 'password'}
               placeholder='Password'
               className='mb-0'
               {...register(`password`, registerOptions.password)}
             />
+            {passwordShown ? (
+              <AiOutlineEyeInvisible
+                className='position-absolute end-0 translate-middle'
+                style={{ top: '50%', cursor: 'pointer' }}
+                onClick={togglePassword}
+              />
+            ) : (
+              <AiOutlineEye
+                className='position-absolute end-0 translate-middle'
+                style={{ top: '50%', cursor: 'pointer' }}
+                onClick={togglePassword}
+              />
+            )}
+          </Form.Group>
             {errors?.password?.message && (
               <span className='text-danger small'>
                 {errors.password.message}
               </span>
             )}
             <Button
-              className='font-semibold link py-2 px-3 rounded text-white w-100 mt-4 mb-4'
+              className='font-semibold link py-2 px-3 rounded text-white w-100 my-4'
               type='submit'
             >
               Sign in
@@ -93,7 +108,6 @@ export default function Password() {
                 Recover now
               </Link>
             </p>
-          </Form.Group>
         </Form>
       )}
     </UserPageLayout>

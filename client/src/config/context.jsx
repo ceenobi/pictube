@@ -6,6 +6,7 @@ export const StateContext = createContext()
 
 export const StateProvider = ({ children }) => {
   const [userinfo, setUserInfo] = useState(null)
+  const [passwordShown, setPasswordShown] = useState(false)
 
   const getUserDetails = async () => {
     const user = localStorage.getItem('userinfo')
@@ -15,12 +16,18 @@ export const StateProvider = ({ children }) => {
     getUserDetails()
   }, [])
 
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown)
+  }
+
   return (
     <StateContext.Provider
       value={{
         userinfo,
         setUserInfo,
         getUserDetails,
+        passwordShown,
+        togglePassword,
       }}
     >
       {children}

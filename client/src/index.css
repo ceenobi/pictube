@@ -64,11 +64,11 @@ h1 {
 
 input {
   width: 100%;
-  border-top-style: hidden !important;
+  /* border-top-style: hidden !important;
   border-right-style: hidden !important;
   border-left-style: hidden !important;
-  border-bottom-style: 2px solid black !important;
-  background-color: transparent !important;
+  border-bottom-style: 1px solid black !important;
+  background-color: white !important; */
 }
 input:focus {
   outline: none !important;
@@ -119,7 +119,10 @@ input:focus {
 }
 @media (min-width: 992px) {
   .sec {
-    margin-top: 6rem;
+    margin-top: 5.7rem;
+  }
+  .hero {
+    height: 70vh;
   }
 
   .formResize {

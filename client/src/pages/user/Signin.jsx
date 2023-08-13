@@ -5,10 +5,12 @@ import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import registerOptions from '../../utils/FormValidate'
 import { authenticateUser } from '../../config/api'
 import UserPageLayout from '../../components/UserPageLayout'
+import { useState } from 'react'
 
 export default function Signin() {
   const navigate = useNavigate()
   const location = useLocation()
+  const [loading, setLoading] = useState(true)
   const {
     register,
     handleSubmit,
@@ -27,6 +29,8 @@ export default function Signin() {
       }
     } catch (error) {
       console.error(error)
+    } finally {
+      setLoading(false)
     }
   }
   return (
@@ -35,10 +39,7 @@ export default function Signin() {
         <Outlet />
       ) : (
         <UserPageLayout header={'Get back in'}>
-          <Form
-            className='mt-4 w-100'
-            onSubmit={handleSubmit(onSubmitHandler)}
-          >
+          <Form className='mt-4 w-100' onSubmit={handleSubmit(onSubmitHandler)}>
             <Form.Group className='mb-4' controlId='username'>
               <Form.Control
                 type='text'
@@ -56,7 +57,7 @@ export default function Signin() {
                 className='font-semibold link py-2 px-3 rounded text-white w-100 mt-4 mb-4'
                 type='submit'
               >
-                Next
+                {!loading ? 'Loading...' : 'Next'}
               </Button>
               <p className='text-center font-bold text-black'>OR</p>
               <p className='text-sm text-secondary text-center'>

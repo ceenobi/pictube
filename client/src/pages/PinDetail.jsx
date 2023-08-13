@@ -103,13 +103,13 @@ export default function PinDetail() {
                             <FaArrowAltCircleLeft
                               className='position-absolute top-50 start-0 translate-middle text-black z-2'
                               size='1.8rem'
-                              type='button'
+                              style={{ cursor: 'pointer' }}
                               onClick={prevSlide}
                             />
                             <FaArrowAltCircleRight
                               className='position-absolute top-50 start-100 translate-middle text-black z-2'
                               size='1.8rem'
-                              type='button'
+                              style={{ cursor: 'pointer' }}
                               onClick={nextSlide}
                             />
                           </>
@@ -151,7 +151,7 @@ export default function PinDetail() {
                           <MdDownload
                             color='black'
                             size='25px'
-                            type='button'
+                            style={{ cursor: 'pointer' }}
                             title='download image'
                             onClick={() =>
                               downloadImage(state?.pin?._id, image)
@@ -171,14 +171,14 @@ export default function PinDetail() {
                         <AiFillHeart
                           color='red'
                           size='25px'
-                          type='button'
+                          style={{ cursor: 'pointer' }}
                           title='You liked this post'
                         />
                       ) : (
                         <AiFillHeart
                           color='black'
                           size='25px'
-                          type='button'
+                          style={{ cursor: 'pointer' }}
                           title='like this post'
                         />
                       )}

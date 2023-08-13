@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { FiSearch } from 'react-icons/fi'
 import { AiOutlineClose } from 'react-icons/ai'
-import { useLocation, useNavigate} from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function SearchBox() {
   const [show, setShow] = useState(false)
@@ -40,22 +40,20 @@ export default function SearchBox() {
         size='20px'
         color='gray'
         className='position-absolute top-50 translate-middle'
-        type='submit'
-        style={{ left: '30px' }}
+        style={{ left: '30px', cursor: 'pointer' }}
       />
 
       <Form.Control
         type='text'
         placeholder='Search'
-        className='bg-transparent py-2 searchbox'
+        className='bg-light py-2 searchbox'
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       {show ? (
         <AiOutlineClose
-          type='button'
           className='position-absolute top-50 translate-middle'
-          style={{ right: '0' }}
+          style={{ right: '0', cursor: 'pointer' }}
           size='20px'
           color='black'
           onClick={() => {
